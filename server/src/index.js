@@ -20,7 +20,7 @@ let lastRequestTime = 0;
 const fetchRouteWithRetry = async (url, retries = 3) => {
   for (let i = 0; i < retries; i++) {
     try {
-      const response = await axios.get(url, { timeout: 15000 }); 
+      const response = await axios.get(url, { timeout: 15000 });
       return response.data;
     } catch (error) {
       console.error(`Attempt ${i + 1} failed: ${error.message}`);
@@ -43,7 +43,7 @@ wss.on("connection", (ws) => {
 
       const messageString = message.toString("utf-8");
       console.log("Received location update:", messageString);
-      
+
       const { latitude, longitude } = JSON.parse(messageString);
       if (!latitude || !longitude || isNaN(latitude) || isNaN(longitude)) {
         ws.send(JSON.stringify({ error: "Invalid location data" }));
