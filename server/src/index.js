@@ -4,13 +4,13 @@ import axios from "axios";
 import { WebSocketServer } from "ws";
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = 8000;
 const OSRM_SERVER = "http://router.project-osrm.org";
 
 app.use(cors());
 app.use(express.json());
 
-const wss = new WebSocketServer({ port: 8080 });
+const wss = new WebSocketServer({ port: process.env.PORT || 8080 });
 
 let riderLocation = { lat: 28.6139, lng: 77.2090 };
 const destination = { lat: 28.5355, lng: 77.3910 };
